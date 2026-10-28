@@ -3,6 +3,8 @@ import datetime
 import pandas
 import random
 import smtplib
+import ssl
+context = ssl.create_default_context()
 MY_EMAIL = "myemail@gmail.com"
 MY_PASSWORD = "mysecretpassword"
 today_date = datetime.datetime.now()
@@ -28,10 +30,10 @@ if today_tuple in birthday_dict:
     465,
     context=context,
     timeout=30
-) as connection:
-        connection.starttls()
-        connection.login(MY_EMAIL, MY_PASSWORD)
-        connection.sendmail(from_addr=MY_EMAIL, to_addrs=birthday_person["email"],
+) as connection: 
+    connection.starttls()
+    connection.login(MY_EMAIL, MY_PASSWORD)
+    connection.sendmail(from_addr=MY_EMAIL, to_addrs=birthday_person["email"],
                             msg=f"Subject:Happy Birthday!\n\n\n{contents}")
 
 
