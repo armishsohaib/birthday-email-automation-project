@@ -26,15 +26,15 @@ if today_tuple in birthday_dict:
         contents=contents.replace("[NAME]",birthday_person["name"])
 
    with smtplib.SMTP_SSL(
-    "smtp.gmail.com",
-    465,
-    context=context,
-    timeout=30
-) as connection: 
-    connection.starttls()
-    connection.login(MY_EMAIL, MY_PASSWORD)
-    connection.sendmail(from_addr=MY_EMAIL, to_addrs=birthday_person["email"],
-                            msg=f"Subject:Happy Birthday!\n\n\n{contents}")
+       "smtp.gmail.com",
+       465,
+       context=context,
+       timeout=30
+   ) as connection:
+       connection.starttls()
+       connection.login(MY_EMAIL, MY_PASSWORD)
+       connection.sendmail(from_addr=MY_EMAIL, to_addrs=birthday_person["email"],
+                           msg=f"Subject:Happy Birthday!\n\n\n{contents}")
 
 
 
